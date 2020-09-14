@@ -1,0 +1,82 @@
+<div class="container-fluid mb-5">
+  <h1>Bootcamp Enrollment Form</h1>
+  <div class="alert alert-danger" *ngIf="errorMsg">
+    {{errorMsg}}
+  </div>
+  <form #userForm="ngForm" (ngSubmit)="onSubmit()" novalidate>
+
+    <!-- {{userForm.value | json}} -->
+
+    <!-- <div ngModelGroup="address">
+      <div class="form-group">
+        <label for="">Street</label>
+        <input type="text" class="form-control" name="street" ngModel>
+      </div>
+      <div class="form-group">
+        <label for="">City</label>
+        <input type="text" class="form-control" name="city" ngModel>
+      </div>
+      <div class="form-group">
+        <label for="">State</label>
+        <input type="text" class="form-control" name="state" ngModel>
+      </div>
+      <div class="form-group">
+        <label for="">Postal Code</label>
+        <input type="text" class="form-control" name="postalCode" ngModel>
+      </div>
+    </div> -->
+
+    <!-- <hr>
+    {{userModel | json}} -->
+
+    <!-- {{userForm.form.valid}} -->
+
+    <div class="form-group">
+      <label for="">Name</label>
+      <input type="text" name="username" id="" #name="ngModel" [class.is-invalid]="name.touched && name.invalid" class="form-control" [(ngModel)]="userModel.name" required>
+      <small class="text-danger" [class.d-none]="name.valid || name.untouched">Name is required</small>
+    </div>
+
+    <div class="form-group">
+      <label for="">Email</label>
+      <input type="email" name="email" id="" #email="ngModel" class="form-control" [(ngModel)]="userModel.email">
+    </div>
+
+    <div class="form-group">
+      <label for="">Phone</label>
+      <input type="tel" name="phone" id="" #phone="ngModel" pattern="\d{10}$" [class.is-invalid]="phone.touched && phone.invalid" class="form-control" [(ngModel)]="userModel.phone" required>
+      <!-- <small class="text-danger" [class.d-none]="phone.valid || phone.untouched">Phone number is required and must be 10 digits</small> -->
+      <div *ngIf="phone.errors && (phone.invalid || phone.touched)">
+        <small class="text-danger" *ngIf="phone.errors.required">Phone number is required</small>
+        <small class="text-danger" *ngIf="phone.errors.pattern">Phone number must be 10 digits</small>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <select (blur)="validateTopic(topic.value)" (change)="validateTopic(topic.value)" class="custom-select" #topic="ngModel" [class.is-invalid]="topicHasError && topic.touched" name="topic" id="" [(ngModel)]="userModel.topic">
+        <option value="default">I am interested in</option>
+        <option *ngFor="let topic of topics">{{topic}}</option>
+      </select>
+      <small class="text-danger" [class.d-none]="!topicHasError || topic.untouched">Please choose a topic</small>
+    </div>
+
+    <div class="mb-3">
+      <label for="">Time preference</label>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="timePreference" value="morning" [(ngModel)]="userModel.timePreference">
+        <label class="form-check-label">Morning (9AM - 12PM)</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" name="timePreference" value="evening" [(ngModel)]="userModel.timePreference">
+        <label class="form-check-label">Evening (5PM - 8PM)</label>
+      </div>
+    </div>
+
+    <div class="form-check mb-3">
+      <input type="checkbox" class="form-check-input" name="subscribe" [(ngModel)]="userModel.subscribe">
+      <label for="" class="form-check-label">Send me promotional offers</label>
+    </div>
+
+    <button class="btn btn-primary" type="submit" [disabled]="userForm.form.invalid || topicHasError">Submit Form</button>
+  </form>
+</div>
