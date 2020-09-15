@@ -1,0 +1,11 @@
+<h1>Parent Component</h1>
+<div>
+  <button (click)="userLoggedIn=true">Login</button>
+  <button (click)="userLoggedIn=false">Logout</button>
+  {{userLoggedIn}}
+</div>
+<app-child [loggedIn]="userLoggedIn" #child></app-child>
+{{child.name}}
+<button (click)="child.greetBurhan()">Greet</button>
+<!-- when used default value in the child we don't need to pass a reference -->
+<!-- <app-child></app-child> -->
