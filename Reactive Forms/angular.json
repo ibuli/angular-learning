@@ -60,6 +60,9 @@
                   "maximumError": "10kb"
                 }
               ]
+            },
+            "es5": {
+              "tsConfig": "./tsconfig.es5.json"
             }
           }
         },
@@ -70,7 +73,7 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "reactive-forms:build:production"
+              "browserTarget": "reactive-forms:build"
             }
           }
         },
