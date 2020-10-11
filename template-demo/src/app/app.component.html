@@ -4,6 +4,16 @@
 </div>
 
 <div>
+  <div class="likeDiv" (click)="likeImage()">
+    <i class="fa fa-thumbs-up" [ngClass]="{'active': isLike}"></i>
+    <span class="likeSpan" [ngClass]="{'active': isLike}">Like</span>
+  </div>
+  <div class="dislikeDiv" (click)="disLikeImage()">
+    <i class="fa fa-thumbs-down" [ngClass]="{'active': isDisLike}"></i>
+    <span class="dislikeSpan" [ngClass]="{'active': isDisLike}">Dislike</span>
+  </div>
+</div>
+<div class="clickButton">
   <button (click)="incrementCount()">Click</button>
   <p>Clicked {{ count }} times</p>
 </div>
