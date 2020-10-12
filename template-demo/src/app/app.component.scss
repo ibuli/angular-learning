@@ -1,0 +1,35 @@
+.fa {
+    font-size: 30px;
+    cursor: pointer;
+    user-select: none;
+
+    padding-top: 9px;
+    margin-right: 5px;
+  }
+  .fa-thumbs-down:hover {
+    color: red;
+    transform: scale(1.2);
+  }
+  .fa-thumbs-down.active, .dislikeSpan.active {
+    color: red;
+}
+  .fa-thumbs-up:hover {
+    color: darkblue;
+    transform: scale(1.2);
+  }
+  .fa-thumbs-up.active, .likeSpan.active {
+    color: darkblue;
+  }
+  .likeDiv, .dislikeDiv {
+    user-select: none;
+    cursor: pointer;
+    border: 1px solid gray;
+    padding: 10px;
+    display: inline;
+    background-color: white;
+    color: grey;
+  }
+
+  .clickButton {
+    margin-top: 25px;
+  }
